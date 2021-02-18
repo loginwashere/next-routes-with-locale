@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "lint": "standard 'src/*' 'test/*'",
-    "build": "yarn install --production=false --ignore-scripts && del dist/* && babel src -d dist",
+    "build": "yarn install --production=false --ignore-scripts && del dist/* && babel src -d dist && del node_modules/* && yarn install --production=true --ignore-scripts",
     "prepublishOnly": "npm run test",
     "pretest": "npm run lint && npm run build",
     "test": "npm run testOnly",
