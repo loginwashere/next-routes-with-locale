@@ -2,7 +2,7 @@ import { pathToRegexp, compile } from 'path-to-regexp'
 import React from 'react'
 import NextLink from 'next/link'
 import NextRouter from 'next/router'
-import { URL } from 'url'
+import Url from 'url'
 
 module.exports = opts => new Routes(opts)
 
@@ -94,7 +94,7 @@ class Routes {
   }
 
   match (url) {
-    const parsedUrl = new URL(url, url.indexOf('//') === -1 ? 'http://localhost' : undefined)
+    const parsedUrl = new (Url.URL || URL)(url, url.indexOf('//') === -1 ? 'http://localhost' : undefined)
     const { pathname, searchParams } = parsedUrl
     const query = {}
     for (const [key, value] of searchParams.entries()) {
